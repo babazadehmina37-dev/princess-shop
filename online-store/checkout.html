@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تسویه حساب</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <h1>🛍️ پرنسس شاپ</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">خانه</a></li>
+      <li><a href="products.html">محصولات</a></li>
+    </ul>
+  </nav>
+  <div class="cart">🛒 <span id="cart-count">0</span></div>
+</header>
+
+<section class="checkout-form">
+  <h2>تسویه حساب</h2>
+  <form id="checkoutForm">
+    <label>آدرس صورتحساب:</label>
+    <textarea id="billAddress" required></textarea>
+
+    <label>آدرس تحویل:</label>
+    <textarea id="shipAddress" required></textarea>
+
+    <h3>سبد خرید</h3>
+    <ul id="cart-items"></ul>
+    <p>جمع جزئی: <span id="subtotal">0</span> تومان</p>
+    <p>مالیات: <span id="tax">0</span> تومان</p>
+    <p>هزینه ارسال: <span id="shipping">0</span> تومان</p>
+    <p>جمع کل: <span id="total">0</span> تومان</p>
+
+    <button type="submit">ثبت سفارش</button>
+    <button type="button" id="cancelOrder">لغو سفارش</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 فروشگاه پرنسس شاپ - تمامی حقوق محفوظ است.</p>
+</footer>
+
+<script type="module">
+import { cart, saveCart, updateCartCount, calculateTotal } from "./script.js";
+
+const cartItemsList = document.getElementById("cart-items");
+const subtotalEl = document.getElementById("subtotal");
+const taxEl = document.getElementById("tax");
+const shippingEl = document.getElementById("shipping");
+const totalEl = document.getElementById("total");
+
+function renderCart() {
+  cartItemsList.innerHTML = "";
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} × ${item.quantity} = ${(item.price * item.quantity).toLocaleString()} تومان`;
+    cartItemsList.appendChild(li);
+  });
+
+  const { subtotal, tax, shipping, total } = calculateTotal();
+  subtotalEl.textContent = subtotal.toLocaleString();
+  taxEl.textContent = tax.toLocaleString();
+  shippingEl.textContent = shipping.toLocaleString();
+  totalEl.textContent = total.toLocaleString();
+
+  updateCartCount();
+}
+renderCart();
+
+document.getElementById("checkoutForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("✅ سفارش ثبت شد!");
+  cart.length = 0;
+  saveCart();
+  renderCart();
+});
+
+document.getElementById("cancelOrder").addEventListener("click", () => {
+  cart.length = 0;
+  saveCart();
+  renderCart();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه آنلاین</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn/Vazirmatn-font-face.css" rel="stylesheet">
+ <style>
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Vazirmatn', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #f298c7);
+      color:#333;
+      line-height:1.6;
+      direction:rtl;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    header.navbar {
+      background:rgba(255,105,180,0.9);
+      color:#fff;
+      padding:15px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:100%;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      border-radius:0 0 15px 15px;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+    }
+    header.navbar h1 {
+      font-size:22px;
+      font-weight:bold;
+    }
+    header.navbar ul {
+      display:flex;
+      list-style:none;
+    }
+    header.navbar li {
+      margin-left:25px;
+    }
+    header.navbar a {
+      color:#fff;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+    header.navbar a:hover {
+      color:#ffe6f0;
+    }
+    .cart {
+      font-weight:bold;
+      cursor:pointer;
+      font-size:18px;
+    }
+    /* دکمه تماس */
+    .contact-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #ff1493, #ff69b4);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .contact-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    }
+    /* بخش اصلی */
+    main {
+      margin-top:160px;
+      text-align:center;
+    }
+    main button {
+      padding:15px 40px;
+      font-size:1.5rem;
+      border:none;
+      border-radius:40px;
+      cursor:pointer;
+      background:#fff;
+      color:#ff1493;
+      font-weight:bold;
+      box-shadow:0 6px 15px rgba(0,0,0,0.2);
+      transition:all 0.3s ease;
+    }
+    main button:hover {
+      background:#ffe6f0;
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    @media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    header button, main button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+</style>
+</head>
+<body>
+    <header class="navbar">
+  <h1>🛍️ پرنسس شاپ</h1>
+  <nav>
+    <ul>
+    <li><a href="index.html">خانه</a></li>
+    <li><a href="products.html">محصولات</a></li>
+    <!-- دکمه تماس ثابت -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=minababazade287@gmail.com" target="_blank" class="contact-btn">📧 تماس با ما</a>
+
+    </ul>
+  </nav>
+  <div class="cart">🛒 <span id="cart-count">0</span></div>
+</header>
+
+
+  <main>
+    <h2 style="color:white; 
+    margin-bottom:30px;">به فروشگاه ما خوش آمدید 💖</h2>
+    <button onclick="window.location.href='products.html'">مشاهده محصولات</button>
+  </main>
+</body>
+</html>
+
+
